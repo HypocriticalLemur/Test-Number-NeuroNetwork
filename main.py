@@ -54,7 +54,7 @@ class NeuroWork:
 			deltaOuput = layer.weights.transpose() @ deltaOuput * tmp
 			i -= 1
 			# delta_hidden = np.transpose(weights_hidden_to_output) @ delta_output * (hidden * (1 - hidden))
-	def Train(self, learningRate = .1, epochs = 3):
+	def Train(self, learningRate = .01, epochs = 3):
 		self.learningRate = learningRate
 		images, labels = utils.load_dataset()
 
@@ -103,8 +103,13 @@ inpuNeuronsNum = images.shape[1]
 outputNeuronsNum = labels.shape[1]
 # Run()
 myNetwork = NeuroWork(1,inpuNeuronsNum, outputNeuronsNum)
-myNetwork.Train()
+# myNetwork.Train()
 print(f"I think that 3 is {myNetwork.Guess(test_image)}")
 # print("vot")
 
-legacy.Run()
+# legacy.Run()
+import os
+for file in os.listdir("Samples"):
+     fileName = os.fsdecode(file)
+     if fileName.endswith(".jpg") or fileName.endswith(".jpeg"): 
+        print(legacy.Check(*legacy.Load(), "Samples/" + fileName))
