@@ -109,7 +109,8 @@ print(f"I think that 3 is {myNetwork.Guess(test_image)}")
 
 # legacy.Run()
 import os
+netWork = legacy.Load()
 for file in os.listdir("Samples"):
      fileName = os.fsdecode(file)
      if fileName.endswith(".jpg") or fileName.endswith(".jpeg"): 
-        print(legacy.Check(*legacy.Load(), "Samples/" + fileName))
+        print(legacy.Check(*netWork, "Samples/" + fileName))
